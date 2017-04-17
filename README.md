@@ -4,11 +4,11 @@ Project made by Ghislain Cheng from ETNA-school.
 Ce programme permet de récuperer un projet entier poster précédemment sur le serveur svn.
 
 # Installation
-$ wget -r -nd "https://github.com/Mangekyou-sharingan/getsvnproject/archive/master.zip"
-$ unzip master.zip
-$ cd getsvnproject-master
-$ chmod +x install.sh getsvnproject
-$ ./install.sh
+$ wget -r -nd "https://github.com/Mangekyou-sharingan/getsvnproject/archive/master.zip"  
+$ unzip master.zip  
+$ cd getsvnproject-master  
+$ chmod +x install.sh getsvnproject  
+$ ./install.sh  
 
 # Fonctionnement
 Le programme fonctionne de deux manières :
