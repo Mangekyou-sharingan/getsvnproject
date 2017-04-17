@@ -1,8 +1,9 @@
 # getsvnproject
+Project made by Ghislain Cheng from ETNA-school
 Ce programme permet de récuperer un projet entier poster précédemment sur le serveur svn.
 
 # Installation
-Wget link
+Wget 
 mettre le script dans 
 
 # Fonctionnement
