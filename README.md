@@ -7,8 +7,11 @@ mettre le script dans
 
 # Fonctionnement
 Le programme fonctionne de deux manières :
-1. James Madison
-2. James Monroe
-3. John Quincy Adams
-
-    * Si vous êtes dans votre dossier svn le script se lance avec un paramètre (votre login)
+1. Vous êtes déjà dans votre dossier svn
+* Lancer le script avec votre login en paramètre 
+* ex : getsvnproject login_g
+2. Vous n'êtes pas dans votre dossier de svn :
+* Lancer le script avec deux paramètres : login et url_svn_rendu
+* ex : getsvnproject login_g url_rendu
+3. -h ou --help : pour de l'aide
+4. -v ou --version : version du projet
