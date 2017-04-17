@@ -1,0 +1,50 @@
+#!/bin/bash                                                                                                           
+
+mydate=$(date +%Y-%m-%d-%H:%M:%S)
+
+option=0
+if [[ $1 = '-h' ]] || [[ $1 = '--help' ]];then
+    echo "Le script marche dans 2 situations différentes :"
+    echo "-1) Si vous exécuter le programme dans votre dossier de projet "
+    echo "    urlrendu/login/projet ou urlrendu/login"
+    echo "    vous pouvez utiliser qu'un seul paramètre qui est votre login"
+    echo "-2) L'exécution du programme dans un dossier extérieur du svn requiert deux paramètres"
+    echo "    : login et l'url de rendu"
+    option=1
+fi
+if [[ $1 = '-v' ]] || [[ $1 = '--version' ]];then
+    echo "version-beta 1.0"
+    option=1
+fi
+if [ $option -eq 0 ];then
+    if [[ $# -ge 1 ]] && [[ $# -le  2 ]];
+    then
+        echo "traitement.."
+        read -s -p "Password: " pass
+        if [ $# -eq 1 ];
+        then
+            url=$(svn info | grep https | grep URL | cut -d " " -f 2)
+            dirproject=$(echo "$url" | awk -F"/" '{print$(NF)}')
+            if [ $dirproject = $1 ];then
+                dirproject=$(echo "$url" | awk -F"/" '{print$(NF-1)}')
+            fi
+        else if [ $# -eq 2 ];
+             then
+                 dirproject=$(echo "$2" | awk -F"/" '{print $(NF-1)}')
+                 url=$2
+             fi
+        fi
+        wget --user $1 --password $pass -q --spider "$url"
+        if [ $? -eq 0 ];
+        then
+            dossier="$dirproject"."$mydate"
+            mkdir $dossier && cd $dossier
+            wget -r -nH -nd -np -R index.html* --user $1 --password $pass "$url"
+        else
+            echo "URL non valide"
+        fi
+    else
+        echo "Votre commande est invalide : -h ou --help"
+    fi
+fi
+
