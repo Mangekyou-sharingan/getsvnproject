@@ -7,4 +7,4 @@ mettre le script dans
 
 # Fonctionnement
 Le programme fonctionne de deux manières :
-    -Si vous êtes dans votre dossier svn le script se lance avec un paramètre (votre login)
+    * Si vous êtes dans votre dossier svn le script se lance avec un paramètre (votre login)
